@@ -1,0 +1,20 @@
+{
+    "name": "zalanihir/slug-service",
+    "description": "This is the laravel class based small package to generate the slug without any issue.",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Zalanihir\\SlugService\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "ZalaNihir",
+            "email": "devnihirzala@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "version": "1.0.0"
+}
