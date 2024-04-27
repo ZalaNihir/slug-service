@@ -4,21 +4,25 @@ namespace Nihir\SlugService;
 
 use Illuminate\Support\ServiceProvider;
 use Nihir\Services\SlugService;
+use Nihir\SlugService\Console\Commands\PublishResources;
 
 class SlugServiceProvider extends ServiceProvider
 {
+
     public function boot()
     {
-        // For Publishing Resources
         $this->publishes([
-            __DIR__.'/Services' => app_path('Services'),
-        ]);
+            __DIR__ . '/Services' => base_path('app/Services'),
+        ], 'slug-service-resources');
     }
 
+    // Add this method to your service provider
     public function register()
     {
-        $this->app->bind('slug', function () {
-            return new SlugService();
-        });
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                PublishResources::class,
+            ]);
+        }
     }
 }
